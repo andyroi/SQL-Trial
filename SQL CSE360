@@ -1,0 +1,40 @@
+-- INIT database
+CREATE TABLE user_detail(
+  user_id serial PRIMARY KEY,
+  user_name varchar(32) NOT NULL,
+  user_password varchar(32) NOT NULL,
+  first_name varchar(50) NOT NULL,
+  middle_name varchar(50),
+  last_name varchar(50) NOT NULL,
+  prefered_first_name varchar(50) NOT NULL
+);
+
+CREATE TABLE user_data(
+  data_id serial PRIMARY KEY,
+  user_id int NOT NULL,
+  user_name varchar(32) NOT NULL,
+  user_password varchar(32) NOT NULL,
+  personal_data varchar(100)
+);
+
+INSERT INTO user_detail(user_name, user_password, first_name, middle_name, last_name, prefered_first_name)
+VALUES ('andyroi', '12345', 'Andrew', 'James', 'Rodriguez', 'andyroi');
+INSERT INTO user_detail(user_name, user_password, first_name, middle_name, last_name, prefered_first_name)
+VALUES ('I.M.Student', 'Querty3217', 'Ikon', 'David', 'green', 'ike');
+
+INSERT INTO user_data(user_id ,user_name, user_password, personal_data)
+VALUES (1, 'L.R.Carter', '123abcdEFG', 'Personal Information 1');
+INSERT INTO user_data(user_id ,user_name, user_password, personal_data)
+VALUES(1, 'L.R.Carter', '123abcdEFG', 'Personal Information 2');
+
+INSERT INTO user_data(user_id ,user_name, user_password, personal_data)
+VALUES (2, 'andyroi', '12345', 'My Personal Information 1');
+INSERT INTO user_data(user_id ,user_name, user_password, personal_data)
+VALUES(2, 'andyroi', '12345', 'My Personal Information 2');
+
+-- QUERY database
+SELECT * FROM user_detail;
+SELECT * FROM user_data;
+SELECT * FROM user_data WHERE user_name = 'L.R.Carter' AND user_password = '123abcdEFG';
+SELECT * FROM user_data WHERE user_name = 'andyroi' AND user_password = '12345'; 
+SELECT * FROM user_data WHERE user_name = '?' OR '1 = 1' AND user_password = '?' OR '1 = 1'; --grabs all table
